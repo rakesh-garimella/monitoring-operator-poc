@@ -1,0 +1,29 @@
+component:
+  componentReferences: []
+  name: kyma-project.io/module/monitoring
+  provider: internal
+  repositoryContexts:
+  - baseUrl: op-kcp-registry.localhost:8888/unsigned
+    componentNameMapping: urlPath
+    type: ociRegistry
+  resources:
+  - access:
+      filename: sha256:90c7ecee1d74c3dd746625e88e2e47d8a33b21d2f241c325560c6dda3945cfc3
+      mediaType: application/gzip
+      type: localFilesystemBlob
+    name: monitoring-operator
+    relation: local
+    type: helm-chart
+    version: 0.0.1
+  - access:
+      filename: sha256:f4a599c4310b0fe9133b67b72d9b15ee96b52a1872132528c83978239b5effef
+      mediaType: application/octet-stream
+      type: localFilesystemBlob
+    name: config
+    relation: local
+    type: yaml
+    version: 0.0.1
+  sources: []
+  version: 0.0.1
+meta:
+  schemaVersion: v2

@@ -1,0 +1,13 @@
+apiVersion: operator.kyma-project.io/v1alpha1
+kind: Monitoring
+metadata:
+  labels:
+    app.kubernetes.io/name: monitoring
+    app.kubernetes.io/instance: monitoring-sample
+    app.kubernetes.io/part-of: monitoring-operator
+    app.kuberentes.io/managed-by: kustomize
+    app.kubernetes.io/created-by: monitoring-operator
+    operator.kyma-project.io/kyma-name: monitoring-operator
+  name: monitoring-sample
+spec:
+  foo: "bar"

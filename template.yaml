@@ -1,0 +1,57 @@
+apiVersion: operator.kyma-project.io/v1alpha1
+kind: ModuleTemplate
+metadata:
+  name: moduletemplate-monitoring
+  namespace: kcp-system
+  labels:
+    "operator.kyma-project.io/managed-by": "lifecycle-manager"
+    "operator.kyma-project.io/controller-name": "manifest"
+    "operator.kyma-project.io/module-name": "monitoring"
+  annotations:
+    "operator.kyma-project.io/module-version": "0.0.1"
+    "operator.kyma-project.io/module-provider": "internal"
+    "operator.kyma-project.io/descriptor-schema-version": "v2"
+spec:
+  target: control-plane
+  channel: stable
+  data:
+    apiVersion: operator.kyma-project.io/v1alpha1
+    kind: Monitoring
+    metadata:
+      labels:
+        app.kubernetes.io/name: monitoring
+        app.kubernetes.io/instance: monitoring-sample
+        app.kubernetes.io/part-of: monitoring-operator
+        app.kuberentes.io/managed-by: kustomize
+        app.kubernetes.io/created-by: monitoring-operator
+      name: monitoring-sample
+    spec:
+      foo: "bar"
+  descriptor:
+    component:
+      componentReferences: []
+      name: kyma-project.io/module/monitoring
+      provider: internal
+      repositoryContexts:
+      - baseUrl: op-kcp-registry.localhost:5000/unsigned
+        componentNameMapping: urlPath
+        type: ociRegistry
+      resources:
+      - access:
+          digest: sha256:90c7ecee1d74c3dd746625e88e2e47d8a33b21d2f241c325560c6dda3945cfc3
+          type: localOciBlob
+        name: monitoring-operator
+        relation: local
+        type: helm-chart
+        version: 0.0.1
+      - access:
+          digest: sha256:f4a599c4310b0fe9133b67b72d9b15ee96b52a1872132528c83978239b5effef
+          type: localOciBlob
+        name: config
+        relation: local
+        type: yaml
+        version: 0.0.1
+      sources: []
+      version: 0.0.1
+    meta:
+      schemaVersion: v2
